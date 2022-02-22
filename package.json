@@ -1,4 +1,6 @@
 {
+  "name": "strapi-plugin-bull",
+  "version": "0.0.1",
   "devDependencies": {
     "@strapi-community/eslint-config": "^0.1.5",
     "eslint": "^8.9.0"
