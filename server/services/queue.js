@@ -19,7 +19,11 @@ module.exports = ({ strapi }) => ({
       }
       try {
         if (nameConfig.process) {
-          strapi.bull.queues[name].process(nameConfig.process.name, nameConfig.process.concurrency, nameConfig.process.processor);
+          strapi.bull.queues[name].process(
+            nameConfig.process.name,
+            nameConfig.process.concurrency,
+            nameConfig.process.processor({ strapi }).process
+          );
           debug(`${chalk.green('Created')} ${name} queue ${nameConfig.process.name} processor`);
         }
       } catch (e) {
