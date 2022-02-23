@@ -17,6 +17,14 @@ module.exports = ({ strapi }) => ({
       } catch (e) {
         debug(`${chalk.red('Failed to build')} ${name} queue`);
       }
+      try {
+        if (nameConfig.process) {
+          strapi.bull.queues[name].process(nameConfig.process.name, nameConfig.process.concurrency, nameConfig.process.processor);
+          debug(`${chalk.green('Created')} ${name} queue ${nameConfig.process.name} processor`);
+        }
+      } catch (e) {
+        debug(`${chalk.red('Failed to create')} ${name} queue ${nameConfig.process.name} processor`);
+      }
     });
   },
 });
