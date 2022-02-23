@@ -4,7 +4,7 @@ const debug = require('debug')
 
 module.exports = async ({ strapi }) => {
   // Load plugin Config
-  const coreConfig = strapi.config.get('plugin.bull');
+  const coreConfig = strapi.config.get('plugin.strapi-plugin-bull');
 
   // Configure plugin debug
   if (coreConfig.settings.debug === true) {
@@ -18,7 +18,7 @@ module.exports = async ({ strapi }) => {
   };
 
   // Build Bull queue
-  await strapi.plugin('bull').service('queue').buildAll(coreConfig);
+  await strapi.plugin('strapi-plugin-bull').service('queue').buildAll(coreConfig);
 
   // Construct Admin Permissions
   const actions = [
@@ -27,7 +27,7 @@ module.exports = async ({ strapi }) => {
       category: 'Bull',
       displayName: 'Access the Bull Overview page',
       uid: 'settings.read',
-      pluginName: 'bull',
+      pluginName: 'strapi-plugin-bull',
     },
   ];
   await strapi.admin.services.permission.actionProvider.registerMany(actions);
