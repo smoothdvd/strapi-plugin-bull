@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@strapi-community/eslint-config": "^0.1.5",
-    "eslint": "^8.9.0"
+    "eslint": "^8.22.0"
   },
   "dependencies": {
     "bull": "^4.6.1",
