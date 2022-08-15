@@ -392,10 +392,10 @@ browserslist@^4.17.5:
     node-releases "^2.0.2"
     picocolors "^1.0.0"
 
-bull@^4.6.1:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/bull/-/bull-4.6.1.tgz#9d387a30414cfc7fa64b4aa16ef9d4971cb6563a"
-  integrity sha512-LjTBDy3Mua7Tz9xYn2kl/HJvwd5qj6XTLiTCXtPyPxP4HtRrixkm7YytKRFwQbOwcfK++1sBrnIp0nb0ePusgw==
+bull@^4.8.5:
+  version "4.8.5"
+  resolved "https://registry.yarnpkg.com/bull/-/bull-4.8.5.tgz#eebafddc3249d6d5e8ced1c42b8bfa8efcc274aa"
+  integrity sha512-2Z630e4f6VsLJnWMAtfEHwIqJYmND4W3dcG48RIbXeWpvb4UnYtpe/zxEdslJu0PKrltB4IkFj5YtBsdeQRn8w==
   dependencies:
     cron-parser "^4.2.1"
     debuglog "^1.0.0"
