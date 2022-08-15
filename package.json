@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "bull": "^4.8.5",
-    "chalk": "^4.1.2",
+    "chalk": "^5.0.1",
     "debug": "^4.3.3"
   },
   "repository": "https://github.com/smoothdvd/strapi-plugin-bull.git",
