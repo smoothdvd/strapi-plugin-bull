@@ -1,6 +1,6 @@
 {
   "name": "@alexgao/strapi-plugin-bull",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "author": "alexgao",
   "strapi": {
     "name": "strapi-plugin-bull",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "bull": "^4.8.5",
-    "chalk": "^5.0.1",
+    "chalk": "^4.1.2",
     "debug": "^4.3.4"
   },
   "repository": "https://github.com/smoothdvd/strapi-plugin-bull.git",
