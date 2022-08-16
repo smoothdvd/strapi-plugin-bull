@@ -12,7 +12,7 @@ module.exports = ({ strapi }) => ({
       debug(`${chalk.yellow('Building')} ${name} queue`);
       const nameConfig = coreConfig.queues[name];
       try {
-        strapi.bull.queues[name] = new Bull(name, nameConfig.redis);
+        strapi.bull.queues[name] = new Bull(name, { redis: nameConfig.redis });
         debug(`${chalk.green('Built')} ${name} queue`);
       } catch (e) {
         debug(`${chalk.red('Failed to build')} ${name} queue`);
