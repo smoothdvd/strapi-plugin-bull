@@ -2,13 +2,19 @@
 
 module.exports = {
   default: {
+    redis: {
+      host: 'localhost',
+      port: 6379,
+      db: 0,
+      password: null,
+    },
     settings: {
       debug: false,
     },
     queues: {
       // Example queue
-      // queuename: {
-      //   name: 'queuename',
+      // queueName: {
+      //   name: 'queueName',
       //   redis: {
       //     host: 'localhost',
       //     port: 6379,
@@ -23,5 +29,5 @@ module.exports = {
       // }
     },
   },
-  validator(/* config */) { },
+  validator(/* config */) {},
 };
