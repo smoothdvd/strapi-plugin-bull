@@ -21,6 +21,10 @@
     "chalk": "^4.1.2",
     "debug": "^4.3.4"
   },
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
   "repository": "https://github.com/smoothdvd/strapi-plugin-bull.git",
   "license": "MIT",
   "private": false
