@@ -1,24 +1,26 @@
+/* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["strapi"] }] */
+
 'use strict';
 
-const debug = require('debug')
+const debug = require('debug');
 
 module.exports = async ({ strapi }) => {
   // Load plugin Config
-  const coreConfig = strapi.config.get('plugin.strapi-plugin-bull');
+  const config = strapi.config.get('plugin.strapi-plugin-bull');
 
   // Configure plugin debug
-  if (coreConfig.settings.debug === true) {
-    debug.enable('strapi:strapi-plugin-bull')
+  if (config.settings.debug === true) {
+    debug.enable('strapi:strapi-plugin-bull');
   }
 
   // Construct Bull API
   strapi.bull = {
-    config: coreConfig,
+    config,
     queues: {},
   };
 
   // Build Bull queue
-  await strapi.plugin('strapi-plugin-bull').service('queue').buildAll(coreConfig);
+  await strapi.plugin('strapi-plugin-bull').service('queue').buildAll(config);
 
   // Construct Admin Permissions
   const actions = [
