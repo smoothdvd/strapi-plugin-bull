@@ -9,8 +9,12 @@
     "kind": "plugin"
   },
   "devDependencies": {
-    "@strapi-community/eslint-config": "^0.4.3",
-    "eslint": "^8.22.0"
+    "@strapi/eslint-config": "^0.1.2",
+    "eslint": "^8.22.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0"
   },
   "dependencies": {
     "bull": "^4.8.5",
