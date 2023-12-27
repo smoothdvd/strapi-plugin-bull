@@ -1,17 +1,30 @@
-/* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["strapi"] }] */
+import { Strapi } from '@strapi/strapi';
 
-'use strict';
+import Bull from 'bull';
+import chalk from 'chalk';
+import debugModule from 'debug';
+import { BullConfig } from '../config';
 
-const Bull = require('bull');
-const chalk = require('chalk');
-const debug = require('debug')('strapi:strapi-plugin-bull');
+const debug = debugModule('strapi:strapi-plugin-bull');
 
-module.exports = ({ strapi }) => ({
-  buildAll(config) {
+export default ({ strapi }: { strapi: Strapi }) => ({
+  buildAll(config: BullConfig) {
     // default redis config
-    const {
-      default: { redis = {} },
-    } = config;
+    const { redis } = config;
+    
+    // construct Bull API
+    if (Object.keys(config.queues).length === 0) {
+      // create the default queue
+      try {
+        strapi.bull.queues = {
+          default: new Bull('default', { redis }),
+        };
+        debug(`${chalk.green('Built')} defalut queue`);
+      } catch (error) {
+        debug(`${error}`);
+        debug(`${chalk.red('Failed to build')} default queue`);
+      }
+    }
 
     Object.keys(config.queues).forEach((name) => {
       debug(`${chalk.yellow('Building')} ${name} queue`);
@@ -27,7 +40,7 @@ module.exports = ({ strapi }) => ({
           strapi.bull.queues[name].process(
             queueConfig.process.name,
             queueConfig.process.concurrency,
-            queueConfig.process.processor({ strapi }).process
+            queueConfig.process.processor({ strapi }).process as Bull.ProcessCallbackFunction<any>
           );
           debug(`${chalk.green('Created')} ${name} queue ${queueConfig.process.name} processor`);
         }

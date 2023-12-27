@@ -2,20 +2,26 @@
   "name": "@alexgao/strapi-plugin-bull",
   "version": "0.0.9",
   "author": "alexgao",
+  "main": "strapi-server.js",
   "strapi": {
     "name": "strapi-plugin-bull",
     "displayName": "Bull for Strapi",
     "description": "Premium Queue package for handling distributed jobs and messages in NodeJS",
     "kind": "plugin"
   },
+  "scripts": {
+    "develop": "tsc -p tsconfig.server.json -w",
+    "build": "tsc -p tsconfig.server.json"
+  },
   "dependencies": {
     "bull": "^4.12.0",
-    "chalk": "^5.3.0",
     "debug": "^4.3.4"
   },
   "devDependencies": {
     "@strapi/eslint-config": "^0.2.0",
+    "@strapi/typescript-utils": "^4.6.0",
     "@types/debug": "^4.1.12",
+    "chalk": "^4.1.2",
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
@@ -27,7 +33,7 @@
     "@strapi/strapi": "^4.0.0"
   },
   "engines": {
-    "node": ">=18.x.x <=20.x.x",
+    "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
   "repository": "https://github.com/smoothdvd/strapi-plugin-bull.git",
