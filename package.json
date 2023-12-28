@@ -1,6 +1,6 @@
 {
   "name": "@alexgao/strapi-plugin-bull",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "author": "alexgao",
   "main": "strapi-server.js",
   "strapi": {
