@@ -1,14 +1,14 @@
 export interface BullConfig {
-    redis: {
-      host?: string;
-      port: number;
-      db?: number;
-      username?: string;
-      password?: string;
-    };
-    settings: {
-      debug: boolean;
-    };
+  redis: {
+    host?: string;
+    port: number;
+    db?: number;
+    username?: string;
+    password?: string;
+  };
+  settings: {
+    debug: boolean;
+  };
   queues: {
     [key: string]: {
       name: string;
@@ -19,13 +19,13 @@ export interface BullConfig {
         username?: string;
         password?: string;
       };
-      process: {
+      processes: {
         name: string;
         concurrency: number;
         processor: ({ strapi }: { strapi: any }) => {
           process(job: any): Promise<void>;
         };
-      };
+      }[];
     };
   };
 }

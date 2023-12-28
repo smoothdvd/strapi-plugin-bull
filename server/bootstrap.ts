@@ -22,7 +22,7 @@ export default async ({ strapi }: { strapi: Strapi }) => {
     config,
     queues: undefined as unknown as Strapi['bull']['queues'],
   };
-  
+
   // Build Bull queue
   await strapi.plugin('strapi-plugin-bull').service('queue').buildAll(config);
 

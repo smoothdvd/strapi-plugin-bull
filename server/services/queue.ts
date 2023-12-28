@@ -34,25 +34,26 @@ export default ({ strapi }: { strapi: Strapi }) => ({
           ...strapi.bull.queues,
           [name]: new Bull(name, {
             redis: queueConfig.redis ? queueConfig.redis : redis,
-          })
+          }),
         };
         debug(`${chalk.green('Built')} ${name} queue`);
       } catch (e) {
         debug(`${chalk.red('Failed to build')} ${name} queue`);
       }
-      try {
-        if (queueConfig.process) {
-          strapi.bull.queues[name].process(
-            queueConfig.process.name,
-            queueConfig.process.concurrency,
-            queueConfig.process.processor({ strapi }).process as Bull.ProcessCallbackFunction<any>
-          );
-          debug(`${chalk.green('Created')} ${name} queue ${queueConfig.process.name} processor`);
-        }
-      } catch (e) {
-        debug(
-          `${chalk.red('Failed to create')} ${name} queue ${queueConfig.process.name} processor`
-        );
+
+      if (queueConfig.processes) {
+        queueConfig.processes.map((process) => {
+          try {
+            strapi.bull.queues[name].process(
+              process.name,
+              process.concurrency,
+              process.processor({ strapi }).process as Bull.ProcessCallbackFunction<any>
+            );
+            debug(`${chalk.green('Created')} ${name} queue ${process.name} processor`);
+          } catch (e) {
+            debug(`${chalk.red('Failed to create')} ${name} queue ${process.name} processor`);
+          }
+        });
       }
     });
   },
