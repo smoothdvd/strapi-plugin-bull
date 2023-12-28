@@ -11,7 +11,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
   buildAll(config: BullConfig) {
     // default redis config
     const { redis } = config;
-    
+
     // construct Bull API
     if (Object.keys(config.queues).length === 0) {
       // create the default queue
@@ -30,7 +30,12 @@ export default ({ strapi }: { strapi: Strapi }) => ({
       debug(`${chalk.yellow('Building')} ${name} queue`);
       const queueConfig = config.queues[name];
       try {
-        strapi.bull.queues[name] = new Bull(name, { redis: { ...redis, ...queueConfig.redis } });
+        strapi.bull.queues = {
+          ...strapi.bull.queues,
+          [name]: new Bull(name, {
+            redis: queueConfig.redis ? queueConfig.redis : redis,
+          })
+        };
         debug(`${chalk.green('Built')} ${name} queue`);
       } catch (e) {
         debug(`${chalk.red('Failed to build')} ${name} queue`);
