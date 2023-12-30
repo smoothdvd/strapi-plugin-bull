@@ -1,4 +1,5 @@
 import { Strapi } from '@strapi/strapi';
+import debug from 'debug';
 
 import { BullConfig } from './config';
 
@@ -16,6 +17,11 @@ declare module '@strapi/strapi' {
 export default async ({ strapi }: { strapi: Strapi }) => {
   // Load plugin Config
   const config = strapi.config.get<BullConfig>('plugin.strapi-plugin-bull');
+
+  // Configure plugin debug
+  if (config.settings.debug === true) {
+    debug.enable('strapi:strapi-plugin-bull');
+  }
 
   // Construct Bull API
   strapi.bull = {
