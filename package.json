@@ -20,6 +20,7 @@
   "devDependencies": {
     "@strapi/eslint-config": "^0.2.0",
     "@strapi/typescript-utils": "^4.6.0",
+    "@types/bull": "^4.10.0",
     "@types/debug": "^4.1.12",
     "chalk": "^4.1.2",
     "eslint": "^8.56.0",
