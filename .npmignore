@@ -11,6 +11,7 @@ npm-debug.log
 # RC files
 .eslintrc.js
 .prettierrc.json
+.prettierrc.js
 
 # ignore files
 .prettierignore
@@ -24,3 +25,6 @@ npm-debug.log
 
 # tests
 __tests__
+
+# example
+example
